@@ -1,42 +1,35 @@
 <script>
-  const SIZE = 3;
-  const ITER = Array(SIZE).fill(0);
+  import {isWin, MARKER_O, MARKER_X, place, newBoard} from './tic-tac-toe';
 
   let board;
   let marker;
   let message;
+  let winCount = {
+    [MARKER_O]: 0,
+    [MARKER_X]: 0
+  };
+
   newGame();
 
-  function evaluate(rowIndex, columnIndex) {
-    const row = board[rowIndex];
-    const marker = row[columnIndex];
-    const column = board.map(row => row[columnIndex]);
-    const diag1 = ITER.map((_, i) => board[i][i]);
-    const diag2 = ITER.map((_, i) => board[SIZE - 1 - i][i]);
-    const options = [row, column, diag1, diag2];
-    if (options.some(option => option.every(cell => cell === marker))) {
-      message = marker + ' wins!';
-    }
-  }
-
-  function move(rowIndex, columnIndex) {
-    const row = board[rowIndex];
-    const current = row[columnIndex];
-    if (current === '') {
-      row[columnIndex] = marker;
-      marker = marker === '✕' ? '◯' : '✕';
+  function attemptPlace(rowIndex, columnIndex) {
+    if (place(board, marker, rowIndex, columnIndex)) {
       board = board; // trigger reactivity
-      evaluate(rowIndex, columnIndex);
+      if (isWin(board, rowIndex, columnIndex)) {
+        message = marker + ' wins!';
+        winCount[marker]++;
+        //TODO: Don't allow additional moves after a win until new game.
+      } else {
+        // Switch to the other marker.
+        marker = marker === MARKER_X ? MARKER_O : MARKER_X;
+      }
+    } else {
+      alert('failed to place');
     }
   }
 
   function newGame() {
-    board = [];
-    for (let _ = 0; _ < SIZE; _++) {
-      const row = Array(SIZE).fill('');
-      board.push(row);
-    }
-    marker = '✕';
+    board = newBoard();
+    marker = MARKER_X;
     message = '';
   }
 </script>
@@ -46,7 +39,10 @@
   {#each board as row, rowIndex}
     <div class="row">
       {#each row as marker, columnIndex}
-        <div class="column" on:click={() => move(rowIndex, columnIndex)}>
+        <div
+          class="column"
+          on:click={() => attemptPlace(rowIndex, columnIndex)}
+        >
           {marker}
         </div>
       {/each}
@@ -54,6 +50,8 @@
   {/each}
   <div class="message">{message}</div>
   <button on:click={newGame}>New Game</button>
+  <div>{MARKER_X} wins: {winCount[MARKER_X]}</div>
+  <div>{MARKER_O} wins: {winCount[MARKER_O]}</div>
 </main>
 
 <style>
