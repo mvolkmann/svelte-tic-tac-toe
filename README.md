@@ -9,4 +9,5 @@ To run this:
 1. Browse localhost:5000
 
 This app has also been deployed to Vercel.
-To run the app from there, browse <https://svelte-tic-tac-toe-psi.vercel.app>.
+To run the app from there, browse
+<https://svelte-tic-tac-toe.rmarkvolkmann.vercel.app>.
