@@ -1,4 +1,4 @@
-const BOARD_SIZE = 3;
+export const BOARD_SIZE = 3;
 
 // This is used by the evaluate function.
 const ITER = Array(BOARD_SIZE).fill(0);
@@ -11,6 +11,7 @@ export const MARKER_X = '✕';
 export function isWin(board, rowIndex, columnIndex) {
   const row = board[rowIndex];
   const marker = row[columnIndex];
+  if (!marker) return false;
   const column = board.map(row => row[columnIndex]);
   const diag1 = ITER.map((_, i) => board[i][i]);
   const diag2 = ITER.map((_, i) => board[BOARD_SIZE - 1 - i][i]);

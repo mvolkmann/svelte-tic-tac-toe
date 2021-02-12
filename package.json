@@ -6,7 +6,9 @@
     "dev": "rollup -c -w",
     "format": "prettier --write '{public,src}/**/*.{css,html,js,svelte}'",
     "lint": "eslint --fix --quiet src --ext .js,.svelte",
-    "start": "sirv public"
+    "start": "sirv public",
+    "test": "jest src",
+    "test:watch": "npm run test -- --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
