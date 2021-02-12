@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<body>
+  <div>
+    <main
+      class="svelte-1kut9xv"
+    >
+      <h1>
+        Tic Tac Toe
+      </h1>
+       
+      <div
+        class="row svelte-1kut9xv"
+      >
+        <div
+          class="column svelte-1kut9xv"
+        >
+          
+        </div>
+        <div
+          class="column svelte-1kut9xv"
+        >
+          
+        </div>
+        <div
+          class="column svelte-1kut9xv"
+        >
+          
+        </div>
+      </div>
+      <div
+        class="row svelte-1kut9xv"
+      >
+        <div
+          class="column svelte-1kut9xv"
+        >
+          
+        </div>
+        <div
+          class="column svelte-1kut9xv"
+        >
+          
+        </div>
+        <div
+          class="column svelte-1kut9xv"
+        >
+          
+        </div>
+      </div>
+      <div
+        class="row svelte-1kut9xv"
+      >
+        <div
+          class="column svelte-1kut9xv"
+        >
+          
+        </div>
+        <div
+          class="column svelte-1kut9xv"
+        >
+          
+        </div>
+        <div
+          class="column svelte-1kut9xv"
+        >
+          
+        </div>
+      </div>
+       
+      <div
+        class="message svelte-1kut9xv"
+      >
+        
+      </div>
+       
+      <button>
+        New Game
+      </button>
+       
+      <div>
+        ✕
+         wins: 
+        0
+      </div>
+       
+      <div>
+        ◯
+         wins: 
+        0
+      </div>
+    </main>
+  </div>
+</body>
+`;

@@ -1,3 +1,5 @@
+import {render} from '@testing-library/svelte';
+import App from './App.svelte';
 import {
   BOARD_SIZE,
   isWin,
@@ -6,6 +8,11 @@ import {
   place,
   newBoard
 } from './tic-tac-toe';
+
+test('should match snapshot', () => {
+  const {container} = render(App);
+  expect(container).toMatchSnapshot();
+});
 
 test('should create board', () => {
   const board = newBoard();
